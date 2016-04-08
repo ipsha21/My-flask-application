@@ -1,0 +1,25 @@
+from flask import Flask, render_template, url_for, redirect
+from flask_wtf import Form
+from wtforms.fields import RadioField, SubmitField 
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret'
+
+class YesNoQuestionForm(Form):
+	answer = RadioField('Your answer', choices=[('yes', 'Yes'), ('no', 'No')])
+	submit = SubmitField('Submit')
+
+@app.route('/')
+def index():
+	form = YesNoQuestionForm()
+	if form.validate_on_submit():
+		if form.answer.data == 'yes':
+			return redirect (url_for('password'))
+    	return render_template('index.html')
+
+@app.route("/password")
+def password():
+	return render_template('password.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)

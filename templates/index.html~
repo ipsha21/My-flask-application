@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>Password Meter!</title>
+	</head>
+	<body>
+		<h1>Check the strength of your password.</h1>
+		<g>Enter your password. I'm going to tell you how strong it is.<br>Ready? Click <g href="{{ url_for('password') }}">here</g> to begin.</g>
+		<form method="POST">
+			<g>
+				<input type="radio" name="answer" value="yes"> Yes<br>
+				<input type="radio" name="answer" value="no"> No<br>
+			</g>
+			<input type="submit" value="Submit">
+		</form>
+	</body>
+</html>
